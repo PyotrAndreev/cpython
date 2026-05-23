@@ -93,7 +93,9 @@ def run_tests(args, tests, huntrleaks=None):
 
 
 def parse_args():
-    parser = argparse.ArgumentParser()
+    parser = argparse.ArgumentParser(
+        epilog="Any other arguments are passed to the test runner."
+    )
     parser.add_argument('-i', '--input',
                         help='Test names produced by --list-tests written '
                              'into a file. If not set, run --list-tests')
@@ -105,7 +107,6 @@ def parse_args():
     parser.add_argument('-N', '--max-iter', type=int, default=100,
                         help='Maximum number of bisection iterations '
                              '(default: 100)')
-    # FIXME: document that following arguments are test arguments
 
     args, test_args = parser.parse_known_args()
     args.test_args = test_args
